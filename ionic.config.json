@@ -1,0 +1,7 @@
+{
+  "name": "conversApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

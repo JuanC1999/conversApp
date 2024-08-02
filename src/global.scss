@@ -35,3 +35,27 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* src/global.scss */
+:root {
+  --background-color: rgba(81, 27, 125, 0.17);
+  --button-color: #511B7D;
+  --text-color: #FFFFFF;
+}
+
+ion-content {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+ion-button {
+  --background: var(--button-color);
+  --background-activated: var(--button-color);
+  --background-focused: var(--button-color);
+  --background-hover: var(--button-color);
+  color: var(--text-color);
+}
+
+ion-label {
+  color: var(--text-color);
+}

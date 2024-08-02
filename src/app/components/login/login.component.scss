@@ -1,0 +1,38 @@
+/* src/app/components/login/login.component.scss */
+:host {
+  ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+
+  ion-item {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  ion-button {
+    --background: var(--button-color);
+    --background-activated: var(--button-color);
+    --background-focused: var(--button-color);
+    --background-hover: var(--button-color);
+    color: var(--text-color);
+    width: 100%;
+  }
+}

@@ -1,7 +1,9 @@
+<!-- src/app/components/chat/chat.component.html -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>Chats</ion-title>
-    <ion-button style="position: absolute; top: 0; right: 0;" (click)="startNewChat()">Nuevo Chat</ion-button>
+    <ion-title>ConversApp</ion-title>
+    <ion-button style="position: absolute; top: 0; right: 0; color: white;" (click)="startNewChat()">Nuevo Chat</ion-button>
+    <ion-button style="position: absolute; top: 0; left: 0; color: white;" (click)="logout()">Salir</ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -17,7 +19,7 @@
   </ion-list>
   <div *ngIf="selectedGroup">
     <ion-list>
-      <ion-item *ngFor="let message of messages">
+      <ion-item *ngFor="let message of messages" [ngClass]="{'sent': message.sender === loggedInUser, 'received': message.sender !== loggedInUser}">
         <ion-label>
           <h2>{{ message.sender }}</h2>
           <p>{{ message.content }}</p>
@@ -26,26 +28,8 @@
       </ion-item>
     </ion-list>
     <ion-item>
-      <ion-input [(ngModel)]="messageContent" placeholder="Type a message"></ion-input>
-      <ion-button (click)="sendMessageGroup()">Send</ion-button>
-    </ion-item>
-  </div>
-  <div *ngIf="selectedUser">
-    <ion-list>
-      <ion-item>
-        {{ user.username }}
-      </ion-item>
-      <ion-item *ngFor="let message of privateMessages">
-        <ion-label>
-          <h2>{{ message.sender }}</h2>
-          <p>{{ message.content }}</p>
-          <p>{{ message.sent_at }}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-    <ion-item>
-      <ion-input [(ngModel)]="privateMessageContent" placeholder="Type a message"></ion-input>
-      <ion-button (click)="sendPrivateMessage()">Send</ion-button>
+      <ion-input [(ngModel)]="messageContent" placeholder="Escribe un mensaje..."></ion-input>
+      <ion-button (click)="sendMessageGroup()">Enviar</ion-button>
     </ion-item>
   </div>
 </ion-content>

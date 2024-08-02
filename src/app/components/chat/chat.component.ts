@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../../services/chat.service';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-chat',
@@ -7,6 +8,7 @@ import { ChatService } from '../../services/chat.service';
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit {
+  loggedInUser: string = '';
   user: any;
   groups: any[] = [];
   users: any[] = [];
@@ -18,11 +20,12 @@ export class ChatComponent implements OnInit {
   privateMessageContent: string = '';
   showUserList: boolean = false;
 
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService, private router: Router) {} 
 
   ngOnInit() {
     const userString = localStorage.getItem('user');
     this.user = userString ? JSON.parse(userString) : null;
+    this.loggedInUser = this.user ? this.user.username : '';
     this.chatService.getGroupsByUser(this.user.id).subscribe(groups => {
       this.groups = groups;
     });
@@ -39,6 +42,11 @@ export class ChatComponent implements OnInit {
     });
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+  
   startNewChat() {
     this.showUserList = true;
   }
